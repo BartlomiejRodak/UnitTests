@@ -21,6 +21,7 @@ namespace Calculator.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ICalculatorService, CalculatorService>();
+            services.AddTransient<IOperationService, OperationService>();
             services.AddControllers();
             services.AddSwaggerGen();
         }
