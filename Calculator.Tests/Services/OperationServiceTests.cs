@@ -14,6 +14,7 @@ namespace Calculator.Tests.Services
             this.sut = new OperationService();
         }
 
+        #region Standard Assertion
         [Fact]
         public void Add_Given_Two_Numbers_When_Add_Then_Return_Correct_Result_Example_With_Normal_Assertion()
         {
@@ -35,6 +36,7 @@ namespace Calculator.Tests.Services
             // Assert
             Assert.Equal(typeof(decimal), result.GetType());
         }
+        #endregion
 
         #region Fluent Assertion Unit tests
         [Fact]
@@ -79,6 +81,20 @@ namespace Calculator.Tests.Services
             var result = sut.Add(1, 2);
 
             // Assert
+            result.Should().BeOfType(typeof(decimal));
+        }
+        #endregion
+
+        #region Aggregated (Few assertions in one test)
+        [Fact]
+        public void Subtract_Given_Two_Numbers_When_Subtract_Then_Return_Correct_Decimal_Result()
+        {
+            // Arrange
+            // Act
+            var result = sut.Subtract(1, 2);
+
+            // Assert
+            result.Should().Be(-1);
             result.Should().BeOfType(typeof(decimal));
         }
         #endregion
