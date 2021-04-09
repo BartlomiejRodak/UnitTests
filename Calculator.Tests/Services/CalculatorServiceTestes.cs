@@ -53,5 +53,25 @@ namespace Calculator.Tests.Services
             this.operationServiceMock.Verify(v => v.Multiply(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
         }
         #endregion
+
+        #region Verify
+        [Fact]
+        public void Calculate_Given_Calculation_Type_And_Numbers_When_Multiply_Then_Multiply_Operation_With_Correct_Numbers_Was_Called_Once()
+        {
+            // Arrange
+            this.operationServiceMock
+                .Setup(x => x.Multiply(It.IsAny<decimal>(), It.IsAny<decimal>()))
+                .Returns(4);
+            var num1 = 2m;
+            var num2 = 2m;
+
+            // Act
+            this.sut.Calculate(OperationType.Multiply, num1, num2);
+
+            // Assert
+            this.operationServiceMock
+                .Verify(v => v.Multiply(It.Is<decimal>(x => x == num1), It.Is<decimal>(x => x == num2)), Times.Once);
+        }
+        #endregion
     }
 }
