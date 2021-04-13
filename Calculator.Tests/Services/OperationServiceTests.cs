@@ -22,7 +22,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Add(1, 2);
+            var result = this.sut.Add(1, 2);
 
             // Assert
             Assert.Equal(3, result);
@@ -33,7 +33,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Add(1, 2);
+            var result = this.sut.Add(1, 2);
 
             // Assert
             Assert.Equal(typeof(decimal), result.GetType());
@@ -46,7 +46,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Add(1, 2);
+            var result = this.sut.Add(1, 2);
 
             // Assert
             result.Should().Be(3);
@@ -57,7 +57,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Add(0, 2);
+            var result = this.sut.Add(0, 2);
 
             // Assert
             result.Should().Be(2);
@@ -69,7 +69,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Add(3, 2.5m);
+            var result = this.sut.Add(3, 2.5m);
 
             // Assert
             result.Should().Be(5.5m);
@@ -80,7 +80,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Add(1, 2);
+            var result = this.sut.Add(1, 2);
 
             // Assert
             result.Should().BeOfType(typeof(decimal));
@@ -93,7 +93,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Subtract(1, 2);
+            var result = this.sut.Subtract(1, 2);
 
             // Assert
             result.Should().Be(-1);
@@ -113,7 +113,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Multiply(num1, num2);
+            var result = this.sut.Multiply(num1, num2);
 
             // Assert
             result.Should().Be(expectedResult);
@@ -129,7 +129,7 @@ namespace Calculator.Tests.Services
         {
             // Arrange
             // Act
-            var result = sut.Division(num1, num2);
+            var result = this.sut.Division(num1, num2);
 
             // Assert
             result.Should().Be(expectedResult);
@@ -143,7 +143,7 @@ namespace Calculator.Tests.Services
             // Arrange
             // Act
             // Assert
-            sut.Invoking(y => y.Division(3123, 0))
+            this.sut.Invoking(y => y.Division(3123, 0))
                 .Should().Throw<ArgumentException>()
                 .WithMessage("Cannot be divided by zero.");
         }
@@ -158,7 +158,7 @@ namespace Calculator.Tests.Services
             var randomFirstNumber = fixture.Create<decimal>();
             // Act
             // Assert
-            sut.Invoking(y => y.Division(randomFirstNumber, 0))
+            this.sut.Invoking(y => y.Division(randomFirstNumber, 0))
                 .Should().Throw<ArgumentException>()
                 .WithMessage("Cannot be divided by zero.");
         }
