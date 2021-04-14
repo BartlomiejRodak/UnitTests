@@ -100,6 +100,31 @@ namespace Calculator.Tests.Services
             this.operationServiceMock
                 .Verify(v => v.Division(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
         }
+
+        [Fact]
+        public void Calculate_Given_Calculation_Type_And_Numbers_When_Division_Then_Division_Operation_With_Correct_Numbers_Was_Called_Once_Direct()
+        {
+            // Arrange
+            this.operationServiceMock
+                .Setup(x => x.Multiply(It.IsAny<decimal>(), It.IsAny<decimal>()))
+                .Returns(4);
+            var fixture = new Fixture();
+            var num1 = fixture.Create<decimal>();
+            var num2 = fixture.Create<decimal>();
+
+            // Act
+            this.sut.Calculate(OperationType.Subtract, num1, num2);
+
+            // Assert
+            this.operationServiceMock
+                .Verify(v => v.Subtract(num1, num2), Times.Once);
+            this.operationServiceMock
+                .Verify(v => v.Add(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
+            this.operationServiceMock
+                .Verify(v => v.Multiply(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
+            this.operationServiceMock
+                .Verify(v => v.Division(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
+        }
         #endregion
     }
 }
