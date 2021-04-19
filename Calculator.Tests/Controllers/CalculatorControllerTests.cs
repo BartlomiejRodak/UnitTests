@@ -24,7 +24,7 @@ namespace Calculator.Tests.Controllers
 
         [Fact]
         public void GetOperation_Given_Values_When_GetOperation_Then_Return_Correct_Type()
-        {            
+        {
             // Arrange
             var fixture = new Fixture();
             var operationType = fixture.Create<OperationType>();
@@ -36,6 +36,22 @@ namespace Calculator.Tests.Controllers
 
             // Assert
             result.Should().BeOfType<OkObjectResult>();
+        }
+
+        [Fact]
+        public void GetOperation_Given_Values_When_GetOperation_Then_Call_It_Once()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var operationType = fixture.Create<OperationType>();
+            var num1 = fixture.Create<decimal>();
+            var num2 = fixture.Create<decimal>();
+
+            // Act
+            this.sut.GetOperation(operationType, num1, num2);
+
+            // Assert
+            this.calculatorServiceMock.Verify(x => x.Calculate(operationType, num1, num2), Times.Once);
         }
     }
 }
