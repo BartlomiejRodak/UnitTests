@@ -30,6 +30,7 @@ namespace Calculator.API.Services
                 case OperationType.Multiply:
                     result = this.operationService.Multiply(num1, num2);
                     break;
+                case OperationType.Undefined:
                 default:
                     throw new ArgumentException("Wrong Operation Type Selected");
             }
