@@ -15,25 +15,14 @@ namespace Calculator.API.Services
 
         public decimal Calculate(OperationType operationType, decimal num1, decimal num2)
         {
-            decimal result;
-            switch (operationType)
+            var result = operationType switch
             {
-                case OperationType.Add:
-                    result = this.operationService.Add(num1, num2);
-                    break;
-                case OperationType.Subtract:
-                    result = this.operationService.Subtract(num1, num2);
-                    break;
-                case OperationType.Division:
-                    result = this.operationService.Division(num1, num2);
-                    break;
-                case OperationType.Multiply:
-                    result = this.operationService.Multiply(num1, num2);
-                    break;
-                case OperationType.Undefined:
-                default:
-                    throw new ArgumentException("Wrong Operation Type Selected");
-            }
+                OperationType.Add => this.operationService.Add(num1, num2),
+                OperationType.Subtract => this.operationService.Subtract(num1, num2),
+                OperationType.Division => this.operationService.Division(num1, num2),
+                OperationType.Multiply => this.operationService.Multiply(num1, num2),
+                _ => throw new ArgumentException("Wrong Operation Type Selected"),
+            };
 
             return result;
         }
