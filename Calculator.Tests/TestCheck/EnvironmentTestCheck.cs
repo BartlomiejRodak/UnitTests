@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Calculator.Tests.TestCheck
 {
-    public class EnvironmentCheckTests
+    public sealed class EnvironmentCheckTests
     {
         [Fact]
         public void EnvironmentTestCheckPositive()

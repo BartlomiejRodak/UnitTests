@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Calculator.Tests.Controllers
 {
-    public class CalculatorControllerTests
+    public sealed class CalculatorControllerTests
     {
         private readonly Mock<ICalculatorService> calculatorServiceMock;
 

@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Calculator.Tests.Services
 {
-    public class CalculatorServiceTestes
+    public sealed class CalculatorServiceTestes
     {
         private readonly Mock<IOperationService> operationServiceMock;
 

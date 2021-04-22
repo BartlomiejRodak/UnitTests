@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Calculator.Tests.Services
 {
-    public class OperationServiceTests
+    public sealed class OperationServiceTests
     {
         private readonly IOperationService sut;
 
