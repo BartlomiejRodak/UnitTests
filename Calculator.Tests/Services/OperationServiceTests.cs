@@ -7,6 +7,9 @@ using Xunit;
 
 namespace Calculator.Tests.Services
 {
+    /// <summary>
+    /// Unit tests without Mocks
+    /// </summary>
     public sealed class OperationServiceTests
     {
         private readonly IOperationService sut;
