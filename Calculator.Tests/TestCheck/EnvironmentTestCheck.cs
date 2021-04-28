@@ -13,11 +13,5 @@ namespace Calculator.Tests.TestCheck
         {
             true.Should().BeTrue();
         }
-
-        [Fact]
-        public void EnvironmentTestCheckNegative()
-        {
-            true.Should().BeFalse();
-        }
     }
 }
