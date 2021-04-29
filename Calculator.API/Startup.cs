@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Calculator.API.Services;
 using Calculator.API.Services.Abstraction;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Calculator.API
 {
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         public Startup(IConfiguration configuration)
