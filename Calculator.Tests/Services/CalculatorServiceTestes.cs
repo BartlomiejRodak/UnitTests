@@ -1,4 +1,5 @@
-﻿using AutoFixture;
+﻿using System;
+using AutoFixture;
 using Calculator.API.Services;
 using Calculator.API.Services.Abstraction;
 using CalculatorApi.Models.Enums;
@@ -80,12 +81,9 @@ namespace Calculator.Tests.Services
 
         #region Verify + AutoFixture
         [Fact]
-        public void Calculate_Given_Calculation_Type_And_Numbers_When_Division_Then_Division_Operation_With_Correct_Numbers_Was_Called_Once()
+        public void Calculate_Given_Calculation_Type_And_Numbers_When_Multiply_Then_Division_Operation_With_Correct_Numbers_Was_Called_Once()
         {
             // Arrange
-            this.operationServiceMock
-                .Setup(x => x.Multiply(It.IsAny<decimal>(), It.IsAny<decimal>()))
-                .Returns(4);
             var fixture = new Fixture();
             var num1 = fixture.Create<decimal>();
             var num2 = fixture.Create<decimal>();
@@ -108,25 +106,36 @@ namespace Calculator.Tests.Services
         public void Calculate_Given_Calculation_Type_And_Numbers_When_Division_Then_Division_Operation_With_Correct_Numbers_Was_Called_Once_Direct()
         {
             // Arrange
-            this.operationServiceMock
-                .Setup(x => x.Multiply(It.IsAny<decimal>(), It.IsAny<decimal>()))
-                .Returns(4);
             var fixture = new Fixture();
             var num1 = fixture.Create<decimal>();
             var num2 = fixture.Create<decimal>();
 
             // Act
-            this.sut.Calculate(OperationType.Subtract, num1, num2);
+            this.sut.Calculate(OperationType.Division, num1, num2);
 
             // Assert
             this.operationServiceMock
-                .Verify(v => v.Subtract(num1, num2), Times.Once);
+                .Verify(v => v.Division(num1, num2), Times.Once);
             this.operationServiceMock
                 .Verify(v => v.Add(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
             this.operationServiceMock
                 .Verify(v => v.Multiply(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
             this.operationServiceMock
-                .Verify(v => v.Division(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
+                .Verify(v => v.Subtract(It.IsAny<decimal>(), It.IsAny<decimal>()), Times.Never);
+        }
+        #endregion
+
+        #region Simple mock
+        [Fact]
+        public void Calculate_Given_Calculation_Type_And_Numbers_When_Wrong_Type_Then_Throw_Exception()
+        {
+            // Arrange
+            // Act
+            // Assert
+            this.sut.Invoking(x => x
+            .Calculate(OperationType.Undefined, It.IsAny<decimal>(), It.IsAny<decimal>()))
+                .Should().Throw<ArgumentException>()
+                .WithMessage("Wrong Operation Type Selected");
         }
         #endregion
     }
