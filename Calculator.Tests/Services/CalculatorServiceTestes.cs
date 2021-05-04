@@ -125,7 +125,7 @@ namespace Calculator.Tests.Services
         }
         #endregion
 
-        #region Simple mock
+        #region Test with Exception
         [Fact]
         public void Calculate_Given_Calculation_Type_And_Numbers_When_Wrong_Type_Then_Throw_Exception()
         {
