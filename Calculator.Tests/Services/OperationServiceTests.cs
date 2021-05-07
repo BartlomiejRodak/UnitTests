@@ -8,7 +8,7 @@ using Xunit;
 namespace Calculator.Tests.Services
 {
     /// <summary>
-    /// Unit tests without Mocks
+    /// Unit tests without Mocks (Autofixture, FluentAssertions)
     /// </summary>
     public sealed class OperationServiceTests
     {
