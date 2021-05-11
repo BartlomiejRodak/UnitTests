@@ -165,6 +165,20 @@ namespace Calculator.Tests.Services
                 .Should().Throw<ArgumentException>()
                 .WithMessage("Cannot be divided by zero.");
         }
+
+        [Fact]
+        public void Multiply_Given_Two_Numbers_When_Multiply_By_Zero_Then_Return_Zero()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var randomFirstNumber = fixture.Create<decimal>();
+
+            // Act
+            var result = this.sut.Multiply(randomFirstNumber, 0);
+
+            // Assert
+            result.Should().Be(0);
+        }
         #endregion
     }
 }
