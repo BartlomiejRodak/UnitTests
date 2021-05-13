@@ -41,6 +41,19 @@ namespace Calculator.Tests.Services
             // Assert
             Assert.Equal(typeof(decimal), result.GetType());
         }
+
+        [Fact]
+        public void Multiply_Given_Two_Numbers_When_Multiply_With_Zero_Then_Return_Zero()
+        {
+            // Arrange
+            // Act
+            var value1 = 1m;
+            var value2 = 0m;
+            var result = this.sut.Multiply(value1, value2);
+
+            // Assert
+            Assert.Equal(0, result);
+        }
         #endregion
 
         #region Fluent Assertion Unit tests
