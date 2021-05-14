@@ -54,6 +54,19 @@ namespace Calculator.Tests.Services
             // Assert
             Assert.Equal(0, result);
         }
+
+        [Fact]
+        public void Multiply_Given_Two_Numbers_When_Multiply_With_Zero_Then_Return_Zero_Swapped()
+        {
+            // Arrange
+            // Act
+            var value1 = 0m;
+            var value2 = 1m;
+            var result = this.sut.Multiply(value1, value2);
+
+            // Assert
+            Assert.Equal(0, result);
+        }
         #endregion
 
         #region Fluent Assertion Unit tests
