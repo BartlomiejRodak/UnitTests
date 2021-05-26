@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace Calculator.Tests.TestCheck
+namespace Calculator.Tests.NUnit.TestCheck
 {
     /// <summary>
     /// Environment configuration check
