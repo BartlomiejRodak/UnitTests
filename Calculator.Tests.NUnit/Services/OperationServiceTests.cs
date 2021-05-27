@@ -1,5 +1,6 @@
 ﻿using Calculator.API.Services;
 using Calculator.API.Services.Abstraction;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Calculator.Tests.NUnit.Services
@@ -64,6 +65,53 @@ namespace Calculator.Tests.NUnit.Services
 
             // Assert
             Assert.AreEqual(0, result);
+        }
+        #endregion
+
+        #region Fluent Assertion Unit tests
+        [Test]
+        public void Add_Given_Two_Numbers_When_Add_Then_Return_Correct_Result()
+        {
+            // Arrange
+            // Act
+            var result = this.sut.Add(1, 2);
+
+            // Assert
+            result.Should().Be(3);
+        }
+
+        [Test]
+        public void Add_Given_Two_Numbers_When_One_Number_Is_Zero_Then_Return_Correct_Result()
+        {
+            // Arrange
+            // Act
+            var result = this.sut.Add(0, 2);
+
+            // Assert
+            result.Should().Be(2);
+        }
+
+
+        [Test]
+        public void Add_Given_Two_Numbers_When_One_Number_Is_Not_Integer_Then_Return_Correct_Result()
+        {
+            // Arrange
+            // Act
+            var result = this.sut.Add(3, 2.5m);
+
+            // Assert
+            result.Should().Be(5.5m);
+        }
+
+        [Test]
+        public void Add_Given_Two_Numbers_When_Add_Then_Return_Decimal_Result()
+        {
+            // Arrange
+            // Act
+            var result = this.sut.Add(1, 2);
+
+            // Assert
+            result.Should().BeOfType(typeof(decimal));
         }
         #endregion
     }
