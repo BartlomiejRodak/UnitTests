@@ -114,5 +114,19 @@ namespace Calculator.Tests.NUnit.Services
             result.Should().BeOfType(typeof(decimal));
         }
         #endregion
+
+        #region Aggregated (Few assertions in one test)
+        [Test]
+        public void Subtract_Given_Two_Numbers_When_Subtract_Then_Return_Correct_Decimal_Result()
+        {
+            // Arrange
+            // Act
+            var result = this.sut.Subtract(1, 2);
+
+            // Assert
+            result.Should().Be(-1);
+            result.Should().BeOfType(typeof(decimal));
+        }
+        #endregion
     }
 }
