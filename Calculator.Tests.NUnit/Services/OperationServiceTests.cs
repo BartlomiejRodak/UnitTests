@@ -128,5 +128,38 @@ namespace Calculator.Tests.NUnit.Services
             result.Should().BeOfType(typeof(decimal));
         }
         #endregion
+
+        #region TestCase
+        [TestCase(0, 1, 0)]
+        [TestCase(1, 0, 0)]
+        [TestCase(0, 0, 0)]
+        [TestCase(-1, 1, -1)]
+        [TestCase(2.5, 3, 7.5)]
+        [TestCase(0.1, 0.1, 0.01)]
+        public void Multiply_Given_Two_Numbers_When_Multiply_Then_Return_Correct_Result(decimal num1, decimal num2, decimal expectedResult)
+        {
+            // Arrange
+            // Act
+            var result = this.sut.Multiply(num1, num2);
+
+            // Assert
+            result.Should().Be(expectedResult);
+        }
+
+        [TestCase(3, 3, 1)]
+        [TestCase(0, 3, 0)]
+        [TestCase(7.5, 2.5, 3)]
+        [TestCase(-3, 1, -3)]
+        [TestCase(0.2, 0.1, 2)]
+        public void Division_Given_Two_Numbers_When_Division_Then_Return_Correct_Result(decimal num1, decimal num2, decimal expectedResult)
+        {
+            // Arrange
+            // Act
+            var result = this.sut.Division(num1, num2);
+
+            // Assert
+            result.Should().Be(expectedResult);
+        }
+        #endregion
     }
 }
