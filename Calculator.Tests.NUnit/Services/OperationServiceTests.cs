@@ -1,4 +1,5 @@
-﻿using Calculator.API.Services;
+﻿using System;
+using Calculator.API.Services;
 using Calculator.API.Services.Abstraction;
 using FluentAssertions;
 using NUnit.Framework;
@@ -159,6 +160,19 @@ namespace Calculator.Tests.NUnit.Services
 
             // Assert
             result.Should().Be(expectedResult);
+        }
+        #endregion
+
+        #region Exception
+        [Test]
+        public void Division_Given_Two_Numbers_When_Division_By_Zero_Then_Throw_Exception()
+        {
+            // Arrange
+            // Act
+            // Assert
+            this.sut.Invoking(y => y.Division(3123, 0))
+                .Should().Throw<ArgumentException>()
+                .WithMessage("Cannot be divided by zero.");
         }
         #endregion
     }
