@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoFixture;
 using Calculator.API.Services;
 using Calculator.API.Services.Abstraction;
 using FluentAssertions;
@@ -173,6 +174,35 @@ namespace Calculator.Tests.NUnit.Services
             this.sut.Invoking(y => y.Division(3123, 0))
                 .Should().Throw<ArgumentException>()
                 .WithMessage("Cannot be divided by zero.");
+        }
+        #endregion
+
+        #region AutoFixture
+        [Test]
+        public void Division_Given_Two_Numbers_When_Division_By_Zero_Then_Throw_Exception_Using_Autofixture()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var randomFirstNumber = fixture.Create<decimal>();
+            // Act
+            // Assert
+            this.sut.Invoking(y => y.Division(randomFirstNumber, 0))
+                .Should().Throw<ArgumentException>()
+                .WithMessage("Cannot be divided by zero.");
+        }
+
+        [Test]
+        public void Multiply_Given_Two_Numbers_When_Multiply_By_Zero_Then_Return_Zero()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var randomFirstNumber = fixture.Create<decimal>();
+
+            // Act
+            var result = this.sut.Multiply(randomFirstNumber, 0);
+
+            // Assert
+            result.Should().Be(0);
         }
         #endregion
     }
