@@ -10,6 +10,8 @@ namespace Calculator.Tests.NUnit.Services
     /// <summary>
     /// Unit tests without Mocks (Autofixture, FluentAssertions)
     /// </summary>
+    
+    [TestFixture]
     public sealed class OperationServiceTests
     {
         private IOperationService sut;
