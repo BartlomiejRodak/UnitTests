@@ -13,6 +13,8 @@ namespace Calculator.Tests.NUnit.Services
     /// <summary>
     /// Unit tests with Mocks
     /// </summary>
+
+    [TestFixture]
     public class CalculatorServiceTestes
     {
         private Mock<IOperationService> operationServiceMock;
