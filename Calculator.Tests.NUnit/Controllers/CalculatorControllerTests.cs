@@ -12,6 +12,7 @@ namespace Calculator.Tests.NUnit.Controllers
     /// <summary>
     /// Controller unit tests with Mock
     /// </summary>
+    [TestFixture]
     public sealed class CalculatorControllerTests
     {
         private Mock<ICalculatorService> calculatorServiceMock;
