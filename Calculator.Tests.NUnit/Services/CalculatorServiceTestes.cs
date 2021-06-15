@@ -5,7 +5,6 @@ using Calculator.API.Services.Abstraction;
 using CalculatorApi.Models.Enums;
 using FluentAssertions;
 using Moq;
-using NUnit;
 using NUnit.Framework;
 
 namespace Calculator.Tests.NUnit.Services
