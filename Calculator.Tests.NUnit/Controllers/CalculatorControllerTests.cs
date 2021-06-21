@@ -1,4 +1,5 @@
-﻿using AutoFixture;
+﻿using System.Globalization;
+using AutoFixture;
 using Calculator.API.Controllers;
 using Calculator.API.Services.Abstraction;
 using CalculatorApi.Models.Enums;
@@ -10,7 +11,7 @@ using NUnit.Framework;
 namespace Calculator.Tests.NUnit.Controllers
 {
     /// <summary>
-    /// Controller unit tests with Mock
+    /// Controller unit tests with Mock for NUnit
     /// </summary>
     [TestFixture]
     public sealed class CalculatorControllerTests
@@ -22,6 +23,7 @@ namespace Calculator.Tests.NUnit.Controllers
         [SetUp]
         public void SetUp()
         {
+            var x = CultureInfo.CurrentCulture;
             calculatorServiceMock = new Mock<ICalculatorService>();
 
             sut = new CalculatorController(calculatorServiceMock.Object);
