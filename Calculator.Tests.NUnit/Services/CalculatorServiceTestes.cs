@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Calculator.Tests.NUnit.Services
 {
     /// <summary>
-    /// Unit tests with Mocks
+    /// Unit tests with Mocks NUnit
     /// </summary>
 
     [TestFixture]
