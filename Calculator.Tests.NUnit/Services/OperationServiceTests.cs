@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Calculator.Tests.NUnit.Services
 {
     /// <summary>
-    /// Unit tests without Mocks (Autofixture, FluentAssertions)
+    /// Unit tests without Mocks (Autofixture, FluentAssertions) NUnit
     /// </summary>
     
     [TestFixture]
